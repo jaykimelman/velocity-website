@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Container } from '../ui/Container'
 import { siteConfig } from '@/config/site'
+import { footerNavigation } from '@/data/navigation'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -26,31 +27,13 @@ export function Footer() {
             <div>
               <h4 className="mb-4 font-semibold">Quick Links</h4>
               <ul className="space-y-2 text-gray-300">
-                <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#how-it-works" className="hover:text-white transition-colors">
-                    How It Works
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#testimonials" className="hover:text-white transition-colors">
-                    Testimonials
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#faq" className="hover:text-white transition-colors">
-                    FAQ
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#contact" className="hover:text-white transition-colors">
-                    Contact
-                  </Link>
-                </li>
+                {footerNavigation.quickLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="hover:text-white transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -76,7 +59,7 @@ export function Footer() {
                     Book Discovery Call
                   </a>
                 </li>
-                {siteConfig.links.linkedin && (
+                {siteConfig.links.linkedin && siteConfig.links.linkedin !== '#' && (
                   <li>
                     <a
                       href={siteConfig.links.linkedin}
@@ -99,12 +82,15 @@ export function Footer() {
                 © {currentYear} {siteConfig.name}. All rights reserved.
               </p>
               <div className="flex gap-6 text-sm text-gray-400">
-                <Link href="/privacy" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="/terms" className="hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
+                {footerNavigation.legal.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

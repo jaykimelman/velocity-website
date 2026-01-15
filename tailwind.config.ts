@@ -10,10 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          primary: '#1e40af', // Blue - customize to Velocity brand
-          secondary: '#0f172a', // Dark slate
-          accent: '#3b82f6', // Bright blue for CTAs
+          primary: '#1B75BC',   // Blue - primary brand color
+          secondary: '#253466', // Dark Blue - trust/authority
+          accent: '#1B75BC',    // Blue - CTAs
         },
+        gray: {
+          dark: '#828282',      // Dark Grey - high-tech
+          light: '#D7DCE0',     // Light Grey - modern
+        },
+        'off-white': '#F4F4F5', // Backgrounds, sections
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

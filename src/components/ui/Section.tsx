@@ -14,7 +14,7 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
           'py-16 md:py-24',
           {
             'bg-white': bg === 'white',
-            'bg-gray-50': bg === 'gray',
+            'bg-off-white': bg === 'gray',
             'bg-brand-primary/5': bg === 'brand',
           },
           className

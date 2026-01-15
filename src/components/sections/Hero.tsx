@@ -1,15 +1,9 @@
-'use client'
-
+import Link from 'next/link'
 import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { siteConfig } from '@/config/site'
 
 export function Hero() {
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact')
-    contactSection?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <section className="relative bg-gradient-to-br from-brand-primary to-brand-secondary py-20 md:py-32 text-white">
       <Container>
@@ -36,10 +30,10 @@ export function Hero() {
             <Button
               size="lg"
               variant="primary"
-              onClick={scrollToContact}
+              asChild
               className="min-w-[200px]"
             >
-              Get Started
+              <Link href="/contact">Get Started</Link>
             </Button>
             <Button
               size="lg"

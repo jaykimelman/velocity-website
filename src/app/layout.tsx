@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { GoogleTagManager } from '@next/third-parties/google'
+import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { defaultMetadata } from '@/config/seo'
 import { siteConfig } from '@/config/site'
@@ -24,7 +25,7 @@ export default function RootLayout({
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.svg`,
+    logo: `${siteConfig.url}/images/logo.png`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: siteConfig.location.city,
@@ -99,6 +100,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        <Header />
         {children}
         <Footer />
         <Analytics />

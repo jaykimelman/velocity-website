@@ -3,6 +3,10 @@ import { siteConfig } from './site'
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: '/images/favicon.ico',
+    apple: '/images/logo.png',
+  },
   title: {
     default: `${siteConfig.name} | Cin7 Core Implementation & Inventory Management`,
     template: `%s | ${siteConfig.name}`,

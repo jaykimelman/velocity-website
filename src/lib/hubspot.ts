@@ -21,6 +21,8 @@ export async function submitToHubSpot(formData: ContactFormData) {
     fields.push({ name: 'phone', value: formData.phone })
   }
 
+  console.log('Submitting to HubSpot:', { portalId, formGuid, fields })
+
   const response = await fetch(hubspotUrl, {
     method: 'POST',
     headers: {
@@ -35,10 +37,22 @@ export async function submitToHubSpot(formData: ContactFormData) {
     }),
   })
 
+  console.log('HubSpot response status:', response.status)
+
   if (!response.ok) {
-    const error = await response.json()
-    throw new Error(error.message || 'Failed to submit to HubSpot')
+    const errorText = await response.text()
+    console.error('HubSpot error response:', errorText)
+    let errorMessage = 'Failed to submit to HubSpot'
+    try {
+      const error = JSON.parse(errorText)
+      errorMessage = error.message || errorMessage
+    } catch (e) {
+      errorMessage = errorText || errorMessage
+    }
+    throw new Error(errorMessage)
   }
 
-  return response.json()
+  const result = await response.json()
+  console.log('HubSpot success response:', result)
+  return result
 }
